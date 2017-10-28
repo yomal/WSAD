@@ -11,7 +11,7 @@ import robocode.ScannedRobotEvent;
  *
  * @author ASUS
  */
-public class WSAD extends AlphaBot{
+public class WSAD extends BravoBot{
    
     boolean peek; // Don't turn if there's a robot there
     double moveAmount; // How much to move
