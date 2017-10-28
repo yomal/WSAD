@@ -17,32 +17,32 @@ public class FinalRobotFirst extends AlphaBot{
        while(true)
        {
            ahead(300);
-           turnGunRight(360);
-           scan();
+           turnRadarLeft(360);
            ahead(100);
-           turnGunLeft(360);
        }
    }
 
     @Override
     public void onScannedRobot(ScannedRobotEvent event) {
-        
         turnGunRight(event.getBearing());
+        turnRadarLeft(event.getBearing());
         fire(3);
         
     }
 
     @Override
     public void onHitByBullet(HitByBulletEvent event) {
-        ahead(300);
         turnLeft(90);
+        back(250);
+        ahead(300);
     }
 
     @Override
     public void onHitWall(HitWallEvent event) {
-        
-        event.getBearingRadians();
-        back(300);
+        turnRight(event.getBearing() + 90);
+        ahead(300);
+        back(200);
+        turnGunRight(90);
     }
    
     
