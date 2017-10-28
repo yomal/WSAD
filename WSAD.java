@@ -3,29 +3,30 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
+package finalrobotfirst;
 import robocode.*;
 /**
  *
  * @author ASUS
  */
-public class WSAD extends AlphaBot{
+public class WSAD extends BravoBot{
    
     boolean peek; // Don't turn if there's a robot there
-	double moveAmount; // How much to move
+    double moveAmount; // How much to move
+    
+    double bulletdamage = 5;
     
    public void run()
    {
        
        moveAmount = Math.max(getBattleFieldWidth(), getBattleFieldHeight());
-		// Initialize peek to false
         peek = false;
 
         turnLeft(getHeading() % 90);
         ahead(moveAmount);
         // Turn the gun to turn right 90 degrees.
         peek = true;
-        turnGunRight(90);
+        turnRadarRight(360);
         turnRight(90);
 
         while (true) {
@@ -38,7 +39,6 @@ public class WSAD extends AlphaBot{
                 // Turn to the next wall
                 turnRight(90);
         }
-
    }
 
     public void move()
@@ -48,6 +48,11 @@ public class WSAD extends AlphaBot{
    
     @Override
     public void onScannedRobot(ScannedRobotEvent event) {   
+        
+        if(getOthers() > 8)
+        {
+            
+        }
         
         double objHeading;
         double gunHeading = getGunHeading();
@@ -60,31 +65,26 @@ public class WSAD extends AlphaBot{
         
         if(enemybearing == 0)
         {
-            fire(1);
+            fire(5);
         }
         else if(enemybearing < 180 )
         {
-            turnGunRight(objHeading - gunHeading);
-            fire(1);
+            turnRight(objHeading - gunHeading);
+            fire(4);
         }
         else
         {
-            turnGunLeft(objHeading - gunHeading);
-            fire(1);
+            turnLeft(objHeading - gunHeading);
+            fire(3);
         }
-        
+        get
     }
     
     @Override
     public void onHitByBullet(HitByBulletEvent event) {
         turnLeft(90);
         ahead(300);
-    }
-
-
-   
-    
-   
+    }  
    
     
 }
