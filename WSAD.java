@@ -3,27 +3,32 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+package finalrobotfirst;
 import robocode.*;
 /**
  *
  * @author ASUS
  */
-public class FinalRobotFirst extends AlphaBot{
-
+public class WSAD extends AlphaBot{
    
    public void run()
    {
        while(true)
        {
-           ahead(300);
+           //ahead(300);
            turnRadarLeft(360);
-           ahead(100);
+           //ahead(100);
        }
    }
 
     @Override
-    public void onScannedRobot(ScannedRobotEvent event) {
+    public void onScannedRobot(ScannedRobotEvent event) {   
         
+        double angle = getGunHeading();
+        
+        event.getBearing();
+        
+        /*
         if(event.getBearing() > 0){
             turnGunRight(event.getBearing());
             turnRadarRight(event.getBearing());
@@ -33,8 +38,8 @@ public class FinalRobotFirst extends AlphaBot{
             turnGunLeft(-event.getBearing());
             turnRadarLeft(-event.getBearing());
         }
-        fire(3);
-        
+        //fire(3);
+        */
     }
   
 
