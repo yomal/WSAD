@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package finalrobotfirst;
 import robocode.*;
 /**
  *
@@ -24,11 +23,20 @@ public class FinalRobotFirst extends AlphaBot{
 
     @Override
     public void onScannedRobot(ScannedRobotEvent event) {
-        turnGunRight(event.getBearing());
-        turnRadarLeft(event.getBearing());
+        
+        if(event.getBearing() > 0){
+            turnGunRight(event.getBearing());
+            turnRadarRight(event.getBearing());
+        }
+        else
+        {
+            turnGunLeft(-event.getBearing());
+            turnRadarLeft(-event.getBearing());
+        }
         fire(3);
         
     }
+  
 
     @Override
     public void onHitByBullet(HitByBulletEvent event) {
